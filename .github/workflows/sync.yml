@@ -1,0 +1,45 @@
+name: Jukeyman Skills CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-state: '3.11'
+
+    - name: Validate Skill Structure & YAML Frontmatter
+      run: |
+        python -c "
+        import os, sys, yaml
+        errors = []
+        skills_dir = 'skills'
+        if not os.path.exists(skills_dir):
+            print('No skills directory found!')
+            sys.exit(0)
+        for skill_name in os.listdir(skills_dir):
+            path = os.path.join(skills_dir, skill_name, 'SKILL.md')
+            if not os.path.exists(path):
+                continue
+            try:
+                content = open(path, 'r', encoding='utf-8').read()
+                if content.startswith('---'):
+                    parts = content.split('---', 2)
+                    if len(parts) >= 3:
+                        yaml.safe_load(parts[1])
+            except Exception as e:
+                errors.append(f'{skill_name}: {str(e)}')
+        if errors:
+            print('\n'.join(errors))
+            sys.exit(1)
+        print('All skills parsed successfully!')
+        "

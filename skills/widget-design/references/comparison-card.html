@@ -1,0 +1,62 @@
+<!-- Reference skeleton: comparison card (N subjects x M dimensions).
+     Header and body share ONE grid via display:contents rows, so column
+     edges always align. Tint lives on header CELLS, not a full-width bar. -->
+<div class="cmp">
+  <div class="cmp-grid">
+    <div class="cmp-row cmp-head">
+      <span class="dim"></span>
+      <span class="cell subject">Subject A</span>
+      <span class="cell subject">Subject B</span>
+    </div>
+    <div class="cmp-row">
+      <span class="dim">Founded</span>
+      <span class="cell"><b>2019</b><small>origin note</small></span>
+      <span class="cell"><b>2021</b><small>origin note</small></span>
+    </div>
+    <div class="cmp-row">
+      <span class="dim">Flagship</span>
+      <span class="cell"><b>Model X 5.2</b><small>+ companion model</small></span>
+      <span class="cell"><b>Model Y 2.3</b><small>+ two side products</small></span>
+    </div>
+    <div class="cmp-row">
+      <span class="dim">Business</span>
+      <span class="cell"><b>B2B-first</b><small>API + private deploy</small></span>
+      <span class="cell"><b>B2C-first</b><small>global subscriptions</small></span>
+    </div>
+    <div class="cmp-row">
+      <span class="dim">Users</span>
+      <span class="cell"><b class="num">25M</b><small>registered</small></span>
+      <span class="cell"><b class="num">200M</b><small>MAU 5.65M flagship app</small></span>
+    </div>
+  </div>
+  <div class="cmp-foot">Sources: company reports · as of 2026-07</div>
+</div>
+<style>
+  .cmp { max-width: 640px; margin: 0 auto; color: var(--color-text-primary);
+         font-size: var(--text-small); }
+  /* ONE grid: header + all rows. Rows are display:contents so every cell
+     lands in the same three tracks — nothing can drift. */
+  .cmp-grid { display: grid; grid-template-columns: 96px 1fr 1fr;
+              row-gap: 2px; }
+  .cmp-row { display: contents; }
+  .cmp-row > * { padding: var(--space-12); }
+  .cmp-row:not(.cmp-head) > * {
+    border-top: 1px solid var(--color-border-subtle); }
+  .dim { font-size: var(--text-caption); color: var(--color-text-secondary); }
+  .cell b { display: block; font-size: var(--text-body); font-weight: 600; }
+  .cell small { display: block; font-size: var(--text-caption);
+                color: var(--color-text-secondary); margin-top: var(--space-4); }
+  .cell .num { font-variant-numeric: tabular-nums; }
+  /* Header tint sits on the subject CELLS — never a full-width bar. */
+  .cmp-head .subject { font-size: var(--text-body); font-weight: 600;
+                       background: var(--color-cat-blue-50);
+                       border-radius: var(--radius-8);
+                       color: var(--color-cat-blue-800); }
+  .cmp-head .subject + .subject { background: var(--color-bg-subtle);
+                                  color: var(--color-text-primary); }
+  .cmp-foot { margin-top: var(--space-12); font-size: var(--text-caption);
+              color: var(--color-text-tertiary); }
+  @media (max-width: 480px) {
+    .cmp-grid { grid-template-columns: 72px 1fr 1fr; }
+  }
+</style>

@@ -1,0 +1,93 @@
+<!-- Reference skeleton: schedule / timeline card (matches, itineraries,
+     release calendars). All rows share one grid; the upcoming/key row is
+     tinted, never boxed with a dashed or colored border. Status pills sit
+     inside the row next to their content. -->
+<div class="sc">
+  <div class="sc-head">
+    <div>
+      <div class="sc-title">Subject · context</div>
+      <div class="sc-sub">One-line meta · group · coach etc.</div>
+    </div>
+    <span class="sc-badge">stage</span>
+  </div>
+
+  <div class="sc-stats">
+    <span><b class="num">4</b><small>wins</small></span>
+    <span><b class="num">0</b><small>draws</small></span>
+    <span><b class="num">0</b><small>losses</small></span>
+    <span><b class="num">8</b><small>scored</small></span>
+    <span><b class="num">0</b><small>conceded</small></span>
+  </div>
+
+  <div class="sc-sec">Completed</div>
+  <div class="sc-rows">
+    <div class="sc-row">
+      <span class="d"><b>Jun 11</b><small>group</small></span>
+      <span class="body"><b>Team <em class="num">2–0</em> Opponent</b>
+        <small>venue · note</small></span>
+      <span class="pill win">W</span>
+    </div>
+    <div class="sc-row">
+      <span class="d"><b>Jun 18</b><small>group</small></span>
+      <span class="body"><b>Team <em class="num">3–0</em> Opponent</b>
+        <small>venue</small></span>
+      <span class="pill win">W</span>
+    </div>
+    <div class="sc-row hl">
+      <span class="d"><b>Jul 5</b><small>round of 16</small></span>
+      <span class="body"><b>Team vs TBD</b>
+        <small>local 20:00 · broadcaster</small></span>
+      <span class="pill next">next</span>
+    </div>
+  </div>
+  <div class="sc-foot">Sources: official · as of date</div>
+</div>
+<style>
+  .sc { max-width: 640px; margin: 0 auto; color: var(--color-text-primary);
+        font-size: var(--text-small); }
+  .sc-head { display: flex; align-items: center;
+        justify-content: space-between; gap: var(--space-12);
+        padding-bottom: var(--space-12);
+        border-bottom: 1px solid var(--color-border-subtle); }
+  .sc-title { font-size: var(--text-body); font-weight: 600; }
+  .sc-sub { font-size: var(--text-caption);
+        color: var(--color-text-secondary); margin-top: var(--space-4); }
+  .sc-badge { font-size: var(--text-caption); font-weight: 600;
+        padding: var(--space-4) var(--space-12); border-radius: 999px;
+        background: var(--color-cat-blue-50);
+        color: var(--color-cat-blue-800); white-space: nowrap; }
+  .sc-stats { display: flex; gap: var(--space-24);
+        padding: var(--space-12) 0; }
+  .sc-stats b { display: block; font-size: var(--text-body);
+        font-weight: 600; }
+  .sc-stats small { font-size: var(--text-caption);
+        color: var(--color-text-secondary); }
+  .num { font-variant-numeric: tabular-nums; font-style: normal; }
+  .sc-sec { font-size: var(--text-body); font-weight: 600;
+        margin: var(--space-12) 0 var(--space-8); }
+  .sc-rows { display: grid; gap: 2px; }
+  /* Every event row: identical three-track grid. */
+  .sc-row { display: grid; grid-template-columns: 88px 1fr 52px;
+        align-items: center; gap: var(--space-12);
+        padding: var(--space-8); border-radius: var(--radius-8); }
+  .sc-row.hl { background: var(--color-cat-blue-50); }
+  .sc-row .d b { display: block; font-weight: 600; }
+  .sc-row .d small,
+  .sc-row .body small { display: block; font-size: var(--text-caption);
+        color: var(--color-text-secondary); margin-top: var(--space-4); }
+  .sc-row .body b { font-weight: 600; }
+  .sc-row .pill { justify-self: end; font-size: var(--text-caption);
+        font-weight: 600; padding: var(--space-4) var(--space-12);
+        border-radius: 999px; background: var(--color-bg-subtle);
+        color: var(--color-text-secondary); }
+  .sc-row .pill.win { background: var(--color-cat-green-50);
+        color: var(--color-cat-green-800); }
+  .sc-row .pill.next { background: var(--color-cat-blue-50);
+        color: var(--color-cat-blue-800); }
+  .sc-foot { margin-top: var(--space-12); font-size: var(--text-caption);
+        color: var(--color-text-tertiary); }
+  @media (max-width: 480px) {
+    .sc-stats { gap: var(--space-16); flex-wrap: wrap; }
+    .sc-row { grid-template-columns: 72px 1fr 48px; }
+  }
+</style>

@@ -1,0 +1,85 @@
+<!-- Reference skeleton: ranked list with magnitude bars (odds, market share,
+     scores). One accent color for every bar; the leader row is emphasized by
+     a subtle tint, never a border. Validated against the injected tokens. -->
+<div class="rk">
+  <div class="rk-verdict">
+    <div class="rk-verdict-main">
+      <div class="rk-kicker">Headline takeaway · context</div>
+      <div class="rk-team">Leading subject</div>
+      <div class="rk-why">One-line reason it leads, kept short</div>
+    </div>
+    <div class="rk-headline-num">+185<span>metric label</span></div>
+  </div>
+
+  <div class="rk-sec">Ranking title <span class="rk-sec-meta">date · source</span></div>
+  <div class="rk-rows">
+    <div class="rk-row hl">
+      <span class="r">1</span><span class="t">Subject one</span>
+      <span class="bar"><i style="width:92%"></i></span>
+      <span class="o">+185</span><span class="tag">hot</span>
+    </div>
+    <div class="rk-row">
+      <span class="r">2</span><span class="t">Subject two</span>
+      <span class="bar"><i style="width:55%"></i></span>
+      <span class="o">+430</span><span class="tag">note</span>
+    </div>
+    <div class="rk-row">
+      <span class="r">3</span><span class="t">Subject three</span>
+      <span class="bar"><i style="width:42%"></i></span>
+      <span class="o">+650</span><span class="tag"></span>
+    </div>
+    <div class="rk-row">
+      <span class="r">4</span><span class="t">Subject four</span>
+      <span class="bar"><i style="width:30%"></i></span>
+      <span class="o">+1000</span><span class="tag up">rising</span>
+    </div>
+  </div>
+  <div class="rk-foot">Disclaimer / source line · date</div>
+</div>
+<style>
+  .rk { max-width: 640px; margin: 0 auto; color: var(--color-text-primary);
+        font-size: var(--text-small); }
+  .rk-verdict { display: flex; align-items: center;
+        justify-content: space-between; gap: var(--space-16);
+        padding: var(--space-16); background: var(--color-bg-subtle);
+        border-radius: var(--radius-12); }
+  .rk-kicker { font-size: var(--text-caption); color: var(--color-text-secondary); }
+  .rk-team { font-size: var(--text-body); font-weight: 600;
+        margin: var(--space-4) 0; }
+  .rk-why { font-size: var(--text-caption); color: var(--color-text-secondary); }
+  .rk-headline-num { text-align: right; font-size: var(--text-body);
+        font-weight: 600; color: var(--color-brand-secondary);
+        font-variant-numeric: tabular-nums; }
+  .rk-headline-num span { display: block; font-size: var(--text-caption);
+        font-weight: 400; color: var(--color-text-tertiary);
+        margin-top: var(--space-4); }
+  .rk-sec { display: flex; align-items: baseline;
+        justify-content: space-between; font-size: var(--text-body);
+        font-weight: 600; margin: var(--space-20) 0 var(--space-8); }
+  .rk-sec-meta { font-size: var(--text-caption); font-weight: 400;
+        color: var(--color-text-tertiary); }
+  .rk-rows { display: grid; gap: 2px; }
+  /* Every row: identical five-track grid. */
+  .rk-row { display: grid; grid-template-columns: 20px 110px 1fr 56px 44px;
+        align-items: center; gap: var(--space-8);
+        padding: var(--space-4) var(--space-8);
+        border-radius: var(--radius-4); }
+  .rk-row.hl { background: var(--color-cat-blue-50); }
+  .rk-row .r { font-size: var(--text-caption);
+        color: var(--color-text-tertiary);
+        font-variant-numeric: tabular-nums; }
+  .rk-row .t { white-space: nowrap; overflow: hidden;
+        text-overflow: ellipsis; }
+  .rk-row .bar { height: 6px; background: var(--color-bg-subtle);
+        border-radius: var(--radius-4); overflow: hidden; }
+  .rk-row .bar i { display: block; height: 100%;
+        background: var(--color-brand-secondary);
+        border-radius: var(--radius-4); }
+  .rk-row .o { text-align: right; font-weight: 600;
+        font-variant-numeric: tabular-nums; }
+  .rk-row .tag { font-size: var(--text-caption);
+        color: var(--color-text-secondary); text-align: right; }
+  .rk-row .tag.up { color: var(--color-success); }
+  .rk-foot { margin-top: var(--space-12); font-size: var(--text-caption);
+        color: var(--color-text-tertiary); }
+</style>
